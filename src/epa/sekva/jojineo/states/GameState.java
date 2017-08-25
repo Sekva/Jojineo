@@ -11,7 +11,7 @@ public class GameState extends State{
 	
 	public GameState(Game game) {
 		super(game);
-		jogador = new Pleiador(40, 40);
+		jogador = new Pleiador(game, 40, 40);
 	}
 
 	@Override

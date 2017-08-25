@@ -14,7 +14,10 @@ public class ControleTeclado implements KeyListener{
 	
 	
 	public void tick() {
-		
+		sobe = keys[KeyEvent.VK_W];
+		desce = keys[KeyEvent.VK_DOWN];
+		esrq = keys[KeyEvent.VK_LEFT];
+		drt = keys[KeyEvent.VK_RIGHT];
 	}
 
 	@Override

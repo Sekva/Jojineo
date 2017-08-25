@@ -6,6 +6,7 @@ import java.awt.image.BufferStrategy;
 
 import epa.sekva.jojineo.display.Display;
 import epa.sekva.jojineo.gfx.Assets;
+import epa.sekva.jojineo.input.ControleTeclado;
 import epa.sekva.jojineo.states.GameState;
 //import epa.sekva.jojineo.states.MenuState;
 //import epa.sekva.jojineo.states.OpcoesState;
@@ -26,11 +27,14 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	//Estados
+	//ESTADOS
 	
 	private State gameState;
 	//private State menuState;
 	//private State opcoesState;
+	
+	//Input
+	private ControleTeclado controle; 
 	
 	
 	public Game(String title, int width, int height) {
@@ -38,6 +42,7 @@ public class Game implements Runnable {
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		controle  = new ControleTeclado();
 		
 		
 	}
@@ -45,6 +50,7 @@ public class Game implements Runnable {
 	private void init() {	
 
 		display = new Display(title, width, height);
+		display.entregaFrame().addKeyListener(controle);
 		Assets.init();
 		
 		gameState = new GameState(this);
@@ -56,7 +62,7 @@ public class Game implements Runnable {
 	
 	
 	private void update() {
-		
+		controle.tick();
 		if(State.entregaState() != null) {
 			State.entregaState().tick();
 		}
@@ -122,6 +128,10 @@ public class Game implements Runnable {
 		
 		stop();
 			
+	}
+	
+	public ControleTeclado entregaControle() {
+		return controle;
 	}
 	
 	public synchronized void start() {
