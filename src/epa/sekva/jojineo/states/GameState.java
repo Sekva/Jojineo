@@ -15,7 +15,7 @@ public class GameState extends State{
 	public GameState(Game game) {
 		super(game);
 		jogador = new Pleiador(game, 40, 40);
-		teste = new Local("");
+		teste = new Local("res/locais/local1.lcl");
 	}
 
 	@Override
